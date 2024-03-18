@@ -618,3 +618,149 @@ line_edit.setText("QLineEdit")
 .isReadOnly() -> bool          
 ```
 
+#### 文本边距
+
+设置文字与编辑器边界间的内边距
+
+```py
+# 设置控件的文本边距
+.setTextMargins(left: int, top: int, right: int, bottom: int)
+.setTextMargins(margins: QMargins)   
+# 返回控件的文本边距
+.textMargins() -> QMargins              
+```
+
+#### 对齐方式
+
+````py
+# 设置对齐方式
+.setAlignment(flag: Qt.Alignment)
+# 获取对齐方式
+.alignment() -> Qt.Alignment
+````
+
+#### Qt.AlignmentFlag
+
+在PySide6.QtCore.Qt.AlignmentFlag中，对齐方式主要分为：
+
+1. 水平对齐
+
+   | Constant        | Description                                  |
+   | --------------- | -------------------------------------------- |
+   | Qt.AlignLeft    | Aligns with the left edge.                   |
+   | Qt.AlignRight   | Aligns with the right edge.                  |
+   | Qt.AlignHCenter | Centers horizontally in the available space. |
+   | Qt.AlignJustify | Justifies the text in the available space    |
+
+2. 垂直对齐
+
+   | Constant         | Description                                |
+   | ---------------- | ------------------------------------------ |
+   | Qt.AlignTop      | Aligns with the top.                       |
+   | Qt.AlignBottom   | Aligns with the bottom.                    |
+   | Qt.AlignVCenter  | Centers vertically in the available space. |
+   | Qt.AlignBaseline | Aligns with the baseline.                  |
+
+3. 居中对齐
+
+   | Constant       | Description                 |
+   | -------------- | --------------------------- |
+   | Qt.AlignCenter | Centers in both dimensions. |
+
+#### 文本边框
+
+默认情况下，line edit会绘制一个边框，也可以通过代码设置取消
+
+```py
+# 设置边框。默认值为True
+.setFrame(yes: bool)  
+# 返回是否具有边框
+.hasFrame() -> bool   
+```
+
+#### 文本编辑
+
+通过槽函数进行复制、粘贴等操作操作
+
+```py
+# 清除单行编辑器的内容
+.clear()
+# 将选中的文本复制到剪切板，前提是EchoMode为Normal
+.copy()
+# 将选中的文本复制到剪切板并从编辑器中删除，前提是EchoModeNormal
+.cut()
+# 将剪切板中的文字插入到当前光标位置，删除所有选中的文字，前提是编辑器不处于只 
+读模式
+.paste()
+# 撤销最后一步操作，前提是撤销可用
+.undo()
+# 重做最后一次操作，前提是重做可用
+.redo()
+# 选择所有的文字并将光标移至末尾
+.selectAll()
+# 设置文本
+.setText(text: str) 
+```
+
+其他操作
+
+```py
+# 对于home/end，如果maek为True，则将一直向前选中到首位置；否则任何已经选中的文本将在光标移动时取消选中
+# 将光标移动到行首
+.home(mark: bool)  
+# 将光标移动至行尾
+.end(mark: bool)    
+
+
+# 删除
+.del_()
+.backspace()
+
+
+# 获取当前是否可以撤销，默认为False（因为用户还未进行任何操作）
+.isRedoAvailable()
+# 获取当前是否可以重做
+.isUndoAvailable()
+
+
+# 是否允许拖拽，用户可以选中部分文本进行拖拽，甚至可以拖拽到另一个编辑器中
+# 设置是否允许拖拽，默认不允许
+.setDragEnabled(b: bool)  
+# 获取拖拽允许状态
+.dragEnabled() -> bool    
+
+
+# 在编辑器内添加一个清空按钮，当编辑器内容不为空时显示在末尾
+# 在编辑器内添加清空按钮
+.setClearButtonEnabled(enable: bool) 
+# 是否启用了清空按钮
+.isClearButtonEnabled() -> bool 
+
+
+# 当用户对单行编辑器的内容有修改后，Modified属性会从默认的False变成True
+# 手动设置Modified状态
+.setModified(yes: bool)  
+# 获取用户是否对编辑器有修改
+.isModified() -> bool 
+```
+
+#### 选中文本
+
+```py
+# 返回编辑器中是否有文本被选中
+.hasSelectedText()
+# 返回被选中的文本
+.selectedText()
+# 返回选中文本的起始位置，若没有选中则返回-1
+.selectionStart()
+# 返回选中文本的结束位置，若没有选中则返回-1
+.selectionEnd()
+# 返回选中文本的长度
+.selectionLength()
+
+# 从start开始选中长度为length的文本，length允许为负数
+.setSelection(start: int, length: int)
+# 取消选中任何已被选中的文本
+.deselect()
+```
+
