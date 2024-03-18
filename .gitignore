@@ -2,6 +2,7 @@
 azure_lane_pic/
 .vscode/
 PySide6-Code-Tutorial/
+test.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
