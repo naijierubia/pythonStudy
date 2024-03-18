@@ -1,6 +1,7 @@
 # add ignore file here
 azure_lane_pic/
 .vscode/
+PySide6-Code-Tutorial/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
